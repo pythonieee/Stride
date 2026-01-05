@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Schedule Manager - Tasks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Task page specific styles included here for ease, can move to styles.css */
+        .page-header {
+            margin-bottom: 24px;
+        }
+
+        .page-header h2 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .controls-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .filter-tabs {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 4px;
+            border-radius: 12px;
+            display: flex;
+            gap: 4px;
+        }
+
+        .tab-btn {
+            padding: 8px 16px;
+            border: none;
+            background: none;
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .tab-btn.active {
+            background: rgba(123, 97, 255, 0.1);
+            color: #7b61ff;
+        }
+
+        .add-task-btn {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            padding: 8px 16px;
+            border-radius: 10px;
+            color: #4b6a5a;
+            /* Greenish based on image */
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .task-list-container {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .task-list-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .task-row-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .task-row-item:last-child {
+            border-bottom: none;
+        }
+
+        .task-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .task-tag {
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .tag-gray {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--text-secondary);
+        }
+
+        .tag-orange {
+            background: rgba(255, 165, 0, 0.15);
+            color: #d97706;
+        }
+
+        .tag-blue {
+            background: rgba(59, 130, 246, 0.15);
+            color: #2563eb;
+        }
+
+        .tag-purple {
+            background: rgba(123, 97, 255, 0.15);
+            color: #7b61ff;
+        }
+
+        .tag-red {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+        }
+
+        .overview-column {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .overview-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .stat-row span:last-child {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .chart-container {
+            height: 150px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding: 0 10px;
+            margin-bottom: 24px;
+        }
+
+        .chart-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        .bar {
+            width: 30px;
+            border-radius: 6px 6px 0 0;
+            position: relative;
+        }
+
+        .bar-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .bar-1 {
+            height: 60px;
+            background: rgba(255, 100, 100, 0.3);
+        }
+
+        /* Redish */
+        .bar-2 {
+            height: 40px;
+            background: rgba(255, 200, 50, 0.3);
+        }
+
+        /* Yellowish */
+        .bar-3 {
+            height: 50px;
+            background: rgba(255, 220, 100, 0.3);
+        }
+
+        .bar-4 {
+            height: 90px;
+            background: linear-gradient(180deg, rgba(50, 200, 200, 0.3), rgba(50, 200, 250, 0.1));
+        }
+
+        .btn-full {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-full:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-mesh"></div>
+
+    <main class="glass-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <i class="ph-fill ph-lightning-chase"></i>
+                </div>
+                <span class="brand-name">Stride</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item">
+                    <i class="ph ph-house"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="index.html" class="nav-item">
+                    <i class="ph ph-calendar-blank"></i>
+                    <span>My Schedule</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <i class="ph ph-check-circle"></i>
+                    <span>Tasks</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="ph ph-video-camera"></i>
+                    <span>Meetings</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="ph ph-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <section class="content-area">
+            <div class="page-header">
+                <h2>Tasks</h2>
+                <p style="color: var(--text-secondary);">Manage your to-do list and upcoming tasks.</p>
+            </div>
+
+            <div class="controls-row">
+                <div class="filter-tabs">
+                    <button class="tab-btn active">All</button>
+                    <button class="tab-btn">Due Soon</button>
+                    <button class="tab-btn">Overdue</button>
+                </div>
+                <button class="add-task-btn">
+                    <i class="ph ph-plus"></i> Add Task
+                </button>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Left Column: Task Lists -->
+                <div class="task-list-container">
+                    <!-- Upcoming Tasks -->
+                    <div class="glass-card">
+                        <div class="section-header">
+                            <h3>Upcoming Tasks</h3>
+                        </div>
+                        <div class="task-list-card">
+                            <div class="task-row-item">
+                                <div class="task-left">
+                                    <div class="checkbox checked"><i class="ph-bold ph-check"></i></div>
+                                    <span style="color:var(--text-primary);">Finish Monthly Report</span>
+                                </div>
+                                <span class="task-tag tag-gray">Due Today</span>
+                            </div>
+                            <div class="task-row-item">
+                                <div class="task-left">
+                                    <div class="checkbox checked"><i class="ph-bold ph-check"></i></div>
+                                    <span style="color:var(--text-primary);">Review Design Mockups</span>
+                                </div>
+                                <span class="task-tag tag-orange">Due Tomorrow</span>
+                            </div>
+                            <div class="task-row-item">
+                                <div class="task-left">
+                                    <div class="checkbox checked"><i class="ph-bold ph-check"></i></div>
+                                    <span style="color:var(--text-primary);">Call with Marketing Team</span>
+                                </div>
+                                <span class="task-tag tag-blue">May 26, 2024</span>
+                            </div>
+                            <div class="task-row-item">
+                                <div class="task-left">
+                                    <div class="checkbox checked"><i class="ph-bold ph-check"></i></div>
+                                    <span style="color:var(--text-primary);">Update Project Timeline</span>
+                                </div>
+                                <span class="task-tag tag-blue">May 27, 2024</span>
+                            </div>
+                            <div style="margin-top: 12px;">
+                                <span class="task-tag tag-purple"
+                                    style="cursor: pointer; display: inline-flex; align-items: center; gap:4px;">
+                                    Late Tasks <i class="ph-bold ph-caret-down"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Overdue Tasks -->
+                    <div class="section-header" style="margin-top: 8px;">
+                        <h3>Overdue Task</h3>
+                    </div>
+                    <div class="glass-card">
+                        <div class="task-row-item" style="border: none;">
+                            <div class="task-left">
+                                <div class="checkbox checked"><i class="ph-bold ph-check"></i></div>
+                                <div>
+                                    <div style="color:var(--text-primary); font-weight:500;">Prepare Slide Deck</div>
+                                    <div style="font-size: 0.8rem; color: #999;">Today - 1:33, 2024</div>
+                                    <div style="font-size: 0.8rem; color: #999;">Online Meeting</div>
+                                </div>
+                            </div>
+                            <span class="task-tag tag-red">Overdue</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Overview -->
+                <div class="overview-column glass-card">
+                    <div class="section-header" style="margin-bottom: 24px;">
+                        <h3>Task Overview</h3>
+                    </div>
+
+                    <div class="overview-stats">
+                        <div class="stat-row">
+                            <span>Pending Tasks</span>
+                            <span>5 Tasks</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Overdue Tasks</span>
+                            <span>1 Task</span>
+                        </div>
+                    </div>
+
+                    <div class="section-header" style="margin-bottom: 16px;">
+                        <h4 style="font-size:0.9rem; color:var(--text-secondary); font-weight:400;">Upcoming Tasks</h4>
+                    </div>
+
+                    <div class="chart-container">
+                        <div class="chart-col">
+                            <div class="bar bar-1"></div>
+                            <span class="bar-label">Today</span>
+                        </div>
+                        <div class="chart-col">
+                            <div class="bar bar-2"></div>
+                            <span class="bar-label">Tim</span>
+                        </div>
+                        <div class="chart-col">
+                            <div class="bar bar-3"></div>
+                            <span class="bar-label">May 26</span>
+                        </div>
+                        <div class="chart-col">
+                            <div class="bar bar-4"></div>
+                            <span class="bar-label">2024</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-full">View Calendar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

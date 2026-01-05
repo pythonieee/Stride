@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Schedule Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="background-mesh"></div>
+
+    <main class="glass-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <i class="ph-fill ph-waves"></i>
+                </div>
+                <span class="brand-name">Flow</span>
+            </div>
+            <nav class="nav-menu">
+                <div class="nav-indicator"></div>
+                <a href="#dashboard" class="nav-item active" data-view="dashboard">
+                    <i class="ph ph-house"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#tasks" class="nav-item" data-view="tasks">
+                    <i class="ph ph-check-circle"></i>
+                    <span>Tasks</span>
+                </a>
+                <a href="#meetings" class="nav-item" data-view="meetings">
+                    <i class="ph ph-video-camera"></i>
+                    <span>Meetings</span>
+                </a>
+                <a href="#settings" class="nav-item">
+                    <i class="ph ph-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="account-info">
+                <img src="https://i.pravatar.cc/150?img=12" alt="Profile" class="account-avatar">
+                <div class="account-details">
+                    <span class="account-name">Vedant</span>
+                    <span class="account-role">Product Designer</span>
+                </div>
+                <button class="account-action-btn">
+                    <i class="ph-bold ph-caret-right"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <!-- Main Content Wrapper for Views -->
+        <div class="views-wrapper">
+
+            <!-- Dashboard View -->
+            <section id="dashboard" class="content-area view active-view">
+                <!-- Header -->
+                <header class="top-header">
+                    <div class="greeting">
+                        <h1>Good Morning, Vedant,</h1>
+                        <p>Here is your schedule for today.</p>
+                    </div>
+
+                    <div class="stats-cards">
+                        <div class="stat-card">
+                            <span class="stat-label">Upcoming Events</span>
+                            <div class="stat-value">3 Meetings</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Tasks Due</span>
+                            <div class="stat-value">5 Tasks</div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <!-- Left Main Column -->
+                    <div class="left-stack" style="display: flex; flex-direction: column; gap: 24px;">
+                        <!-- Schedule Section -->
+                        <div class="schedule-section glass-card">
+                            <div class="section-header">
+                                <h3>Today's Schedule</h3>
+                            </div>
+
+                            <div class="calendar-nav">
+                                <button class="icon-btn"><i class="ph ph-caret-left"></i></button>
+                                <span class="current-date">May 24, 2024</span>
+                                <button class="icon-btn"><i class="ph ph-caret-right"></i></button>
+
+                                <div class="view-toggle">
+                                    <button class="active">Week</button>
+                                    <button>Month</button>
+                                </div>
+                            </div>
+
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <span class="time">9:00 AM</span>
+                                    <div class="timeline-indicator">
+                                        <div class="dot"></div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="event-content">
+                                        <div class="event-title">Team Standup</div>
+                                        <div class="event-meta">Online Meeting</div>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <span class="time">11:00 AM</span>
+                                    <div class="timeline-indicator">
+                                        <div class="dot"></div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="event-content">
+                                        <div class="event-title">Project Planning</div>
+                                        <div class="event-meta">Conference Room</div>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <span class="time">1:30 PM</span>
+                                    <div class="timeline-indicator">
+                                        <div class="dot"></div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="event-content">
+                                        <div class="event-title">Lunch Break</div>
+                                        <div class="event-meta"></div>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <span class="time">3:00 PM</span>
+                                    <div class="timeline-indicator">
+                                        <div class="dot"></div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="event-content">
+                                        <div class="event-title">Client Presentation</div>
+                                        <div class="event-meta">With Sarah Parker</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Row Cards -->
+                        <div class="bottom-row" style="display: flex; gap: 24px;">
+                            <div class="focus-card glass-card" style="flex: 1;">
+                                <span class="card-label">Focus Time</span>
+                                <div class="main-stat">2h 00m</div>
+                                <div class="sub-stat">Deep Work Session</div>
+                            </div>
+
+                            <div class="next-meeting-card glass-card" style="flex: 1;">
+                                <span class="card-label">Next Meeting</span>
+                                <div class="meeting-info">
+                                    <div class="meeting-title">Team Standup</div>
+                                    <div class="meeting-time">Today at 9:00 AM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column Stack -->
+                    <div class="right-stack">
+                        <!-- Task List -->
+                        <div class="task-section glass-card" style="height: 100%;">
+                            <div class="section-header">
+                                <h3>Task List</h3>
+                                <button class="icon-btn"><i class="ph ph-dots-three"></i></button>
+                            </div>
+                            <div class="subheader">
+                                <span>Things to Do</span>
+                                <i class="ph ph-dots-three"></i>
+                            </div>
+
+                            <div class="task-list">
+                                <div class="task-item">
+                                    <div class="checkbox checked">
+                                        <i class="ph-bold ph-check"></i>
+                                    </div>
+                                    <span>Finish Monthly Report</span>
+                                </div>
+                                <div class="task-item">
+                                    <div class="checkbox checked">
+                                        <i class="ph-bold ph-check"></i>
+                                    </div>
+                                    <span>Review Design Mockups</span>
+                                </div>
+                                <div class="task-item">
+                                    <div class="checkbox checked">
+                                        <i class="ph-bold ph-check"></i>
+                                    </div>
+                                    <span>Call with Marketing Team</span>
+                                </div>
+                                <div class="task-item">
+                                    <div class="checkbox checked">
+                                        <i class="ph-bold ph-check"></i>
+                                    </div>
+                                    <span>Update Project Timeline</span>
+                                </div>
+                                <div class="task-item add-task">
+                                    <i class="ph ph-plus"></i>
+                                    <span>Add Task</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tasks View -->
+            <section id="tasks" class="content-area view">
+                <style>
+                    /* Inline styles from tasks.html that need to be locally available or moved to global css */
+                    .page-header {
+                        margin-bottom: 24px;
+                    }
+
+                    .page-header h2 {
+                        font-size: 1.8rem;
+                        color: var(--text-primary);
+                        margin-bottom: 4px;
+                    }
+
+                    .controls-row {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 24px;
+                    }
+
+                    .filter-tabs {
+                        background: rgba(255, 255, 255, 0.4);
+                        padding: 4px;
+                        border-radius: 12px;
+                        display: flex;
+                        gap: 4px;
+                    }
+
+                    .tab-btn {
+                        padding: 8px 16px;
+                        border: none;
+                        background: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        color: var(--text-secondary);
+                        font-weight: 500;
+                        font-size: 0.9rem;
+                    }
+
+                    .tab-btn.active {
+                        background: rgba(123, 97, 255, 0.1);
+                        color: #7b61ff;
+                    }
+
+                    .add-task-btn {
+                        background: rgba(255, 255, 255, 0.5);
+                        border: 1px solid rgba(255, 255, 255, 0.6);
+                        padding: 8px 16px;
+                        border-radius: 10px;
+                        color: #4b6a5a;
+                        font-weight: 500;
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        cursor: pointer;
+                    }
+
+                    .task-list-container {
+                        flex: 2;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 24px;
+                    }
+
+                    .task-list-card {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    .task-row-item {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 16px 0;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+                    }
+
+                    .task-row-item:last-child {
+                        border-bottom: none;
+                    }
+
+                    .task-left {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                    }
+
+                    .task-tag {
+                        padding: 4px 12px;
+                        font-size: 0.8rem;
+                        border-radius: 6px;
+                        font-weight: 500;
+                    }
+
+                    .tag-gray {
+                        background: rgba(0, 0, 0, 0.05);
+                        color: var(--text-secondary);
+                    }
+
+                    .tag-orange {
+                        background: rgba(255, 165, 0, 0.15);
+                        color: #d97706;
+                    }
+
+                    .tag-blue {
+                        background: rgba(59, 130, 246, 0.15);
+                        color: #2563eb;
+                    }
+
+                    .tag-purple {
+                        background: rgba(123, 97, 255, 0.15);
+                        color: #7b61ff;
+                    }
+
+                    .tag-red {
+                        background: rgba(239, 68, 68, 0.15);
+                        color: #ef4444;
+                    }
+
+                    .overview-column {
+                        flex: 1.2;
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    .overview-stats {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 16px;
+                        margin-bottom: 24px;
+                    }
+
+                    .stat-row {
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: 0.95rem;
+                        color: var(--text-secondary);
+                    }
+
+                    .stat-row span:last-child {
+                        font-weight: 600;
+                        color: var(--text-primary);
+                    }
+
+                    .chart-container {
+                        height: 150px;
+                        display: flex;
+                        align-items: flex-end;
+                        justify-content: space-between;
+                        padding: 0 10px;
+                        margin-bottom: 24px;
+                    }
+
+                    .chart-col {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 8px;
+                        position: relative;
+                    }
+
+                    .bar {
+                        width: 30px;
+                        border-radius: 6px 6px 0 0;
+                        position: relative;
+                    }
+
+                    .bar-label {
+                        font-size: 0.75rem;
+                        color: var(--text-secondary);
+                    }
+
+                    .bar-1 {
+                        height: 60px;
+                        background: rgba(255, 100, 100, 0.3);
+                    }
+
+                    .bar-2 {
+                        height: 40px;
+                        background: rgba(255, 200, 50, 0.3);
+                    }
+
+                    .bar-3 {
+                        height: 50px;
+                        background: rgba(255, 220, 100, 0.3);
+                    }
+
+                    .bar-4 {
+                        height: 90px;
+                        background: linear-gradient(180deg, rgba(50, 200, 200, 0.3), rgba(50, 200, 250, 0.1));
+                    }
+
+                    .btn-full {
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid rgba(255, 255, 255, 0.4);
+                        background: rgba(255, 255, 255, 0.2);
+                        border-radius: 12px;
+                        cursor: pointer;
+                        color: var(--text-primary);
+                        font-weight: 500;
+                        transition: all 0.2s;
+                    }
+
+                    .btn-full:hover {
+                        background: rgba(255, 255, 255, 0.4);
+                    }
+                </style>
+
+                <div class="page-header">
+                    <h2>Tasks</h2>
+                    <p style="color: var(--text-secondary);">Manage your to-do list and upcoming tasks.</p>
+                </div>
+
+                <div class="controls-row">
+                    <div class="filter-tabs">
+                        <div class="tab-indicator"></div>
+                        <button class="tab-btn active">All</button>
+                        <button class="tab-btn">Due Soon</button>
+                        <button class="tab-btn">Overdue</button>
+                    </div>
+                    <button class="add-task-btn">
+                        <i class="ph ph-plus"></i> Add Task
+                    </button>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Left Column: Task Lists -->
+                    <div class="task-list-container">
+                        <!-- Upcoming Tasks -->
+                        <div class="glass-card">
+                            <div class="section-header">
+                                <h3>Upcoming Tasks</h3>
+                            </div>
+                            <div class="task-list-card">
+                                <div class="task-row-item">
+                                    <div class="task-left">
+                                        <div class="checkbox checked"><i class="ph-bold ph-check"></i></div>
+                                        <span style="color:var(--text-primary);">Finish Monthly Report</span>
+                                    </div>
+                                    <span class="task-tag tag-gray">Due Today</span>
+                                </div>
+                                <div class="task-row-item">
+                                    <div class="task-left">
+                                        <div class="checkbox checked"><i class="ph-bold ph-check"></i></div>
+                                        <span style="color:var(--text-primary);">Review Design Mockups</span>
+                                    </div>
+                                    <span class="task-tag tag-orange">Due Tomorrow</span>
+                                </div>
+                                <div class="task-row-item">
+                                    <div class="task-left">
+                                        <div class="checkbox checked"><i class="ph-bold ph-check"></i></div>
+                                        <span style="color:var(--text-primary);">Call with Marketing Team</span>
+                                    </div>
+                                    <span class="task-tag tag-blue">May 26, 2024</span>
+                                </div>
+                                <div class="task-row-item">
+                                    <div class="task-left">
+                                        <div class="checkbox checked"><i class="ph-bold ph-check"></i></div>
+                                        <span style="color:var(--text-primary);">Update Project Timeline</span>
+                                    </div>
+                                    <span class="task-tag tag-blue">May 27, 2024</span>
+                                </div>
+                                <div style="margin-top: 12px;">
+                                    <span class="task-tag tag-purple"
+                                        style="cursor: pointer; display: inline-flex; align-items: center; gap:4px;">
+                                        Late Tasks <i class="ph-bold ph-caret-down"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Overdue Tasks -->
+                        <div class="section-header" style="margin-top: 8px;">
+                            <h3>Overdue Task</h3>
+                        </div>
+                        <div class="glass-card">
+                            <div class="task-row-item" style="border: none;">
+                                <div class="task-left">
+                                    <div class="checkbox checked"><i class="ph-bold ph-check"></i></div>
+                                    <div>
+                                        <div style="color:var(--text-primary); font-weight:500;">Prepare Slide Deck
+                                        </div>
+                                        <div style="font-size: 0.8rem; color: #999;">Today - 1:33, 2024</div>
+                                        <div style="font-size: 0.8rem; color: #999;">Online Meeting</div>
+                                    </div>
+                                </div>
+                                <span class="task-tag tag-red">Overdue</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Overview -->
+                    <div class="overview-column glass-card">
+                        <div class="section-header" style="margin-bottom: 24px;">
+                            <h3>Task Overview</h3>
+                        </div>
+
+                        <div class="overview-stats">
+                            <div class="stat-row">
+                                <span>Pending Tasks</span>
+                                <span>5 Tasks</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Overdue Tasks</span>
+                                <span>1 Task</span>
+                            </div>
+                        </div>
+
+                        <div class="section-header" style="margin-bottom: 16px;">
+                            <h4 style="font-size:0.9rem; color:var(--text-secondary); font-weight:400;">Upcoming Tasks
+                            </h4>
+                        </div>
+
+                        <div class="chart-container">
+                            <div class="chart-col">
+                                <div class="bar bar-1"></div>
+                                <span class="bar-label">Today</span>
+                            </div>
+                            <div class="chart-col">
+                                <div class="bar bar-2"></div>
+                                <span class="bar-label">Tim</span>
+                            </div>
+                            <div class="chart-col">
+                                <div class="bar bar-3"></div>
+                                <span class="bar-label">May 26</span>
+                            </div>
+                            <div class="chart-col">
+                                <div class="bar bar-4"></div>
+                                <span class="bar-label">2024</span>
+                            </div>
+                        </div>
+
+                        <button class="btn-full">View Calendar</button>
+                    </div>
+                </div>
+            </section>
+            <!-- Meetings View -->
+            <section id="meetings" class="content-area view">
+                <style>
+                    /* Specific styles for Meetings View re-using where possible */
+                    /* Re-use .page-header, .controls-row, .task-list-container styles from Tasks */
+                    .meeting-row-item {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 20px;
+                        border-bottom: 1px solid rgba(0,0,0,0.03);
+                        transition: background 0.2s;
+                    }
+                    .meeting-row-item:hover {
+                        background: rgba(255,255,255,0.2);
+                    }
+                    .meeting-row-item:last-child { border-bottom: none; }
+                    .meeting-info-group { display: flex; align-items: center; }
+                    .meeting-details h4 { font-size: 1rem; color: var(--text-primary); margin-bottom: 4px; font-weight: 600; }
+                    .meeting-details p { font-size: 0.85rem; color: var(--text-secondary); }
+                    
+                    /* Overview Cards specific to meetings */
+                    .stat-box-row {
+                        background: rgba(255,255,255,0.3);
+                        border-radius: 16px;
+                        padding: 16px;
+                        display: flex;
+                        gap: 16px;
+                        margin-bottom: 16px;
+                        border: 1px solid rgba(255,255,255,0.5);
+                    }
+                    .stat-box-icon {
+                        width: 40px; height: 40px;
+                        background: rgba(255,255,255,0.5);
+                        border-radius: 10px;
+                        display: flex; align-items: center; justify-content: center;
+                        font-size: 20px; color: var(--text-secondary);
+                    }
+                </style>
+
+                <div class="page-header">
+                    <h2>Meetings</h2>
+                    <p style="color: var(--text-secondary);">Schedule and manage your upcoming meetings.</p>
+                </div>
+
+                <div class="controls-row">
+                    <div class="filter-tabs">
+                        <div class="tab-indicator"></div>
+                        <button class="tab-btn active">All</button>
+                        <button class="tab-btn">Today's</button>
+                        <button class="tab-btn">Upcoming</button>
+                    </div>
+                    <button class="add-task-btn">
+                        <i class="ph ph-plus"></i> Schedule Meeting <i class="ph ph-caret-down" style="margin-left: 4px;"></i>
+                    </button>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Left Column: Meeting List -->
+                    <div class="task-list-container">
+                        <div class="glass-card" style="padding: 0;">
+                            <!-- Meeting Item 1 -->
+                            <div class="meeting-row-item">
+                                <div class="meeting-info-group">
+                                    <div class="meeting-icon bg-purple-light">
+                                        <i class="ph-fill ph-video-camera"></i>
+                                    </div>
+                                    <div class="meeting-details">
+                                        <h4>Team Standup</h4>
+                                        <p>Today • 9:00 AM</p>
+                                    </div>
+                                </div>
+                                <div class="avatar-group">
+                                    <img src="https://i.pravatar.cc/150?img=12" class="avatar" alt="User">
+                                    <img src="https://i.pravatar.cc/150?img=33" class="avatar" alt="User">
+                                    <div class="avatar more">+4</div>
+                                </div>
+                            </div>
+
+                            <!-- Meeting Item 2 -->
+                            <div class="meeting-row-item">
+                                <div class="meeting-info-group">
+                                    <div class="meeting-icon bg-purple-light">
+                                        <i class="ph-fill ph-rocket"></i>
+                                    </div>
+                                    <div class="meeting-details">
+                                        <h4>Client Presentation</h4>
+                                        <p>Today • 3:00 PM</p>
+                                    </div>
+                                </div>
+                                <div class="avatar-group">
+                                    <img src="https://i.pravatar.cc/150?img=59" class="avatar" alt="User">
+                                    <img src="https://i.pravatar.cc/150?img=11" class="avatar" alt="User">
+                                    <div class="avatar more">+2</div>
+                                </div>
+                            </div>
+
+                            <!-- Meeting Item 3 -->
+                            <div class="meeting-row-item">
+                                <div class="meeting-info-group">
+                                    <div class="meeting-icon bg-blue-light">
+                                        <i class="ph-fill ph-kanban"></i>
+                                    </div>
+                                    <div class="meeting-details">
+                                        <h4>Project Kickoff</h4>
+                                        <p>May 25, 2024 • 11:00 AM</p>
+                                    </div>
+                                </div>
+                                <div class="avatar-group">
+                                    <img src="https://i.pravatar.cc/150?img=5" class="avatar" alt="User">
+                                    <img src="https://i.pravatar.cc/150?img=9" class="avatar" alt="User">
+                                    <div class="avatar more">+5</div>
+                                </div>
+                            </div>
+
+                             <!-- Meeting Item 4 -->
+                             <div class="meeting-row-item">
+                                <div class="meeting-info-group">
+                                    <div class="meeting-icon bg-green-light">
+                                        <i class="ph-fill ph-arrows-clockwise"></i>
+                                    </div>
+                                    <div class="meeting-details">
+                                        <h4>Weekly Sync</h4>
+                                        <p>May 27, 2024 • 11:00 AM</p>
+                                        <p style="font-size: 0.75rem; color: #888;">Conference Room</p>
+                                    </div>
+                                </div>
+                                <div class="avatar-group">
+                                    <img src="https://i.pravatar.cc/150?img=44" class="avatar" alt="User">
+                                    <img src="https://i.pravatar.cc/150?img=32" class="avatar" alt="User">
+                                    <div class="avatar more">+3</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Meeting Item 5 -->
+                            <div class="meeting-row-item">
+                                <div class="meeting-info-group">
+                                    <div class="meeting-icon bg-purple-light">
+                                        <i class="ph-fill ph-presentation-chart"></i>
+                                    </div>
+                                    <div class="meeting-details">
+                                        <h4>Marketing Strategy</h4>
+                                        <p>May 27, 2024 • 2:00 PM</p>
+                                    </div>
+                                </div>
+                                <div class="avatar-group">
+                                    <img src="https://i.pravatar.cc/150?img=13" class="avatar" alt="User">
+                                    <img src="https://i.pravatar.cc/150?img=60" class="avatar" alt="User">
+                                    <div class="avatar more">+5</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Overview -->
+                    <div class="overview-column">
+                        <div class="section-header" style="margin-bottom: 16px;">
+                            <h3>Meetings Overview</h3>
+                        </div>
+
+                        <!-- Stat Box 1 -->
+                        <div class="stat-box-row">
+                            <div class="stat-box-icon">
+                                <i class="ph ph-calendar"></i>
+                            </div>
+                            <div>
+                                <span style="display:block; font-size:0.85rem; color:var(--text-secondary);">Upcoming Meetings</span>
+                                <span style="font-size:1.1rem; font-weight:600; color:var(--text-primary);">3 Meetings</span>
+                            </div>
+                        </div>
+
+                        <!-- Stat Box 2 -->
+                         <div class="stat-box-row">
+                            <div class="stat-box-icon">
+                                <i class="ph ph-presentation"></i>
+                            </div>
+                            <div>
+                                <span style="display:block; font-size:0.85rem; color:var(--text-secondary);">Today's Meetings</span>
+                                <span style="font-size:1.1rem; font-weight:600; color:var(--text-primary);">2 Meetings</span>
+                            </div>
+                        </div>
+
+                        <div class="section-header" style="margin: 24px 0 16px;">
+                            <h3>Task List</h3>
+                        </div>
+
+                        <!-- Reused Task List Component -->
+                        <div class="glass-card" style="padding: 16px;">
+                            <div class="task-list" style="background: none;">
+                                <div class="task-item" style="padding-left:0; padding-right:0;">
+                                    <div class="checkbox checked"><i class="ph-bold ph-check"></i></div>
+                                    <div style="flex:1;">
+                                        <span style="display:block; color:var(--text-primary);">Finish Monthly Report</span>
+                                    </div>
+                                    <span style="font-size:0.75rem; color:#aaa;">Today</span>
+                                </div>
+                                <div class="task-item" style="padding-left:0; padding-right:0;">
+                                    <div class="checkbox checked"><i class="ph-bold ph-check"></i></div>
+                                    <div style="flex:1;">
+                                        <span style="display:block; color:var(--text-primary);">Review Design Mockups</span>
+                                    </div>
+                                    <span style="font-size:0.75rem; color:#aaa;">Tomorrow</span>
+                                </div>
+                                <div class="task-item" style="padding-left:0; padding-right:0;">
+                                    <div class="checkbox checked"><i class="ph-bold ph-check"></i></div>
+                                    <div style="flex:1;">
+                                        <span style="display:block; color:var(--text-primary);">Call with Marketing Team</span>
+                                    </div>
+                                </div>
+                                <div class="task-item" style="padding-left:0; padding-right:0;">
+                                    <div class="checkbox checked"><i class="ph-bold ph-check"></i></div>
+                                    <div style="flex:1;">
+                                        <span style="display:block; color:var(--text-primary);">Update Project Timeline</span>
+                                    </div>
+                                </div>
+                                <div class="task-item add-task" style="padding-left:0; margin-top:8px;">
+                                    <i class="ph ph-plus"></i>
+                                    <span>Add Task</span>
+                                </div>
+                            </div>
+                            
+                            <button class="btn-full" style="margin-top: 16px; background: rgba(255,255,255,0.4);">View All Tasks</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Settings View -->
+            <section id="settings" class="content-area view">
+                <style>
+                    /* Settings Specific Styles */
+                    .settings-grid {
+                        display: grid;
+                        grid-template-columns: 2fr 1fr;
+                        gap: 32px;
+                        max-width: 1200px;
+                    }
+
+                    .settings-card-stack {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 16px;
+                    }
+
+                    .setting-accordion-item {
+                        background: rgba(255, 255, 255, 0.4);
+                        border: 1px solid rgba(255, 255, 255, 0.6);
+                        border-radius: 16px;
+                        overflow: hidden;
+                        transition: all 0.3s ease;
+                    }
+                    
+                    /* Expanded state styling for Account Settings */
+                    .setting-accordion-item.expanded {
+                        background: rgba(255, 255, 255, 0.5);
+                        box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+                    }
+
+                    .accordion-header {
+                        padding: 20px 24px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        cursor: pointer;
+                        color: var(--text-primary);
+                        font-weight: 500;
+                        font-size: 1.05rem;
+                    }
+
+                    .accordion-body {
+                        padding: 0 24px 24px 24px;
+                        display: none;
+                        animation: slideDown 0.3s ease-out;
+                    }
+
+                    .setting-accordion-item.expanded .accordion-body {
+                        display: block;
+                    }
+
+                    .profile-header-row {
+                        display: flex;
+                        align-items: center;
+                        gap: 16px;
+                        margin-bottom: 24px;
+                    }
+
+                    .profile-pic-large {
+                        width: 64px;
+                        height: 64px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        border: 3px solid rgba(255,255,255,0.8);
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+                    }
+
+                    .profile-info h4 {
+                        font-size: 1.2rem;
+                        color: var(--text-primary);
+                        margin-bottom: 4px;
+                    }
+
+                    .profile-info p {
+                        color: var(--text-secondary);
+                        font-size: 0.9rem;
+                    }
+
+                    .icon-btn-square {
+                        width: 40px; 
+                        height: 40px;
+                        border-radius: 10px;
+                        border: 1px solid rgba(255,255,255,0.5);
+                        background: rgba(255,255,255,0.3);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: var(--text-secondary);
+                        cursor: pointer;
+                        margin-left: auto; /* Push to right */
+                    }
+
+                    .input-group {
+                        margin-bottom: 24px;
+                    }
+
+                    .input-label {
+                        display: block;
+                        color: var(--text-secondary);
+                        font-size: 0.9rem;
+                        margin-bottom: 8px;
+                    }
+
+                    .fancy-input {
+                        width: 100%;
+                        padding: 12px 16px;
+                        background: rgba(255,255,255,0.3);
+                        border: 1px solid rgba(255,255,255,0.5);
+                        border-radius: 10px;
+                        font-size: 1rem;
+                        color: var(--text-primary);
+                        outline: none;
+                        transition: all 0.2s;
+                    }
+
+                    .fancy-input:focus {
+                        background: rgba(255,255,255,0.6);
+                        border-color: #7b61ff;
+                    }
+
+                    .save-btn {
+                        background: #7b61ff; /* Fallback */
+                        background: linear-gradient(135deg, #7b61ff 0%, #6145ea 100%);
+                        color: white;
+                        border: none;
+                        padding: 12px 24px;
+                        border-radius: 10px;
+                        font-weight: 500;
+                        cursor: pointer;
+                        box-shadow: 0 4px 12px rgba(123, 97, 255, 0.3);
+                        transition: transform 0.2s;
+                    }
+
+                    .save-btn:hover {
+                        transform: translateY(-2px);
+                    }
+
+                    .delete-link {
+                        display: block;
+                        margin-top: 16px;
+                        color: #ff6b6b;
+                        font-size: 0.9rem;
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+
+                    /* Support Section */
+                    .support-card {
+                        background: rgba(255, 255, 255, 0.3);
+                        border-radius: 20px;
+                        padding: 24px;
+                        border: 1px solid rgba(255, 255, 255, 0.5);
+                    }
+
+                    .support-list {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+                    }
+
+                    .support-item {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        padding: 12px;
+                        color: var(--text-secondary);
+                        text-decoration: none;
+                        border-radius: 10px;
+                        transition: background 0.2s;
+                    }
+
+                    .support-item:hover {
+                        background: rgba(255,255,255,0.4);
+                        color: var(--text-primary);
+                    }
+
+                    .support-item i {
+                        font-size: 20px;
+                    }
+
+                    @media (max-width: 900px) {
+                        .settings-grid {
+                            grid-template-columns: 1fr;
+                        }
+                    }
+                </style>
+
+                <div class="page-header">
+                    <h2>Settings</h2>
+                    <p style="color: var(--text-secondary);">Manage your account, preferences, notifications.</p>
+                </div>
+
+                <!-- Tabs (Visual Only per mockup) -->
+                <div class="controls-row" style="margin-bottom: 32px;">
+                    <div class="filter-tabs">
+                        <div class="tab-indicator"></div>
+                        <button class="tab-btn active">All</button>
+                        <button class="tab-btn">Today's</button>
+                        <button class="tab-btn">Upcoming</button>
+                    </div>
+                </div>
+
+                <div class="settings-grid">
+                    <!-- Left Col -->
+                    <div class="settings-card-stack">
+                        <!-- Account Settings (Expanded) -->
+                        <div class="setting-accordion-item expanded">
+                            <div class="accordion-header">
+                                <span>Account Settings</span>
+                                <i class="ph ph-caret-up"></i>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="profile-header-row">
+                                    <img src="https://i.pravatar.cc/150?img=12" alt="Alex" class="profile-pic-large">
+                                    <div class="profile-info">
+                                        <h4>Alex Johnson</h4>
+                                        <p>alex.johnson@email.com</p>
+                                    </div>
+                                    <button class="icon-btn-square">
+                                        <i class="ph ph-camera"></i>
+                                    </button>
+                                </div>
+
+                                <div class="input-group">
+                                    <label class="input-label">Change Password</label>
+                                    <input type="password" class="fancy-input" value="password123" readonly>
+                                </div>
+
+                                <button class="save-btn">Save Changes</button>
+                                <a class="delete-link">Delete Account</a>
+                            </div>
+                        </div>
+
+                        <!-- Notification Settings -->
+                        <div class="setting-accordion-item">
+                            <div class="accordion-header">
+                                <span>Notification Settings</span>
+                                <i class="ph ph-caret-down"></i>
+                            </div>
+                        </div>
+
+                        <!-- Appearance -->
+                        <div class="setting-accordion-item">
+                            <div class="accordion-header">
+                                <span>Appearance</span>
+                                <i class="ph ph-caret-down"></i>
+                            </div>
+                        </div>
+
+                        <!-- Integrations -->
+                        <div class="setting-accordion-item">
+                            <div class="accordion-header">
+                                <span>Integrations</span>
+                                <i class="ph ph-caret-down"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Col -->
+                    <div class="right-col-stack">
+                         <div class="section-header" style="margin-bottom: 16px;">
+                            <h3>Support</h3>
+                        </div>
+                        <div class="support-card">
+                            <div class="support-list">
+                                <a href="#" class="support-item">
+                                    <i class="ph ph-question"></i>
+                                    <span>Help Center</span>
+                                </a>
+                                <a href="#" class="support-item">
+                                    <i class="ph ph-chat-circle-dots"></i>
+                                    <span>Send Feedback</span>
+                                </a>
+                                <a href="#" class="support-item">
+                                    <i class="ph ph-envelope-simple"></i>
+                                    <span>Contact Support</span>
+                                </a>
+                                <a href="#" class="support-item">
+                                    <i class="ph ph-lock-key"></i>
+                                    <span>Privacy Policy</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="section-header" style="margin: 24px 0 16px;">
+                            <h3>Support</h3>
+                        </div>
+                        <div class="support-card">
+                             <div class="support-list">
+                                <a href="#" class="support-item">
+                                    <i class="ph ph-question"></i>
+                                    <span>Help Center</span>
+                                </a>
+                                <a href="#" class="support-item">
+                                    <i class="ph ph-chat-circle-dots"></i>
+                                    <span>Send Feedback</span>
+                                </a>
+                                <a href="#" class="support-item">
+                                    <i class="ph ph-envelope-simple"></i>
+                                    <span>Contact Support</span>
+                                </a>
+                                <a href="#" class="support-item">
+                                    <i class="ph ph-lock-key"></i>
+                                    <span>Privacy Policy</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navItems = document.querySelectorAll('.nav-item[data-view]');
+            const indicator = document.querySelector('.nav-indicator');
+
+            function updateIndicator(activeItem) {
+                if (!activeItem || !indicator) return;
+
+                // Calculate position relative to the parent nav-menu
+                const parent = activeItem.closest('.nav-menu');
+                const offsetTop = activeItem.offsetTop;
+                const height = activeItem.offsetHeight;
+
+                // Update indicator position
+                indicator.style.top = `${offsetTop}px`;
+                indicator.style.height = `${height}px`;
+            }
+
+            // Initial position
+            const initialActive = document.querySelector('.nav-item.active');
+            if (initialActive) updateIndicator(initialActive);
+
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    const targetId = item.getAttribute('data-view');
+                    const targetView = document.getElementById(targetId);
+                    const currentView = document.querySelector('.view.active-view');
+
+                    // If same view or invalid target, ignore
+                    if (!targetView || currentView === targetView) return;
+
+                    // Update Navigation Active State
+                    document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                    item.classList.add('active');
+
+                    // Move Indicator
+                    updateIndicator(item);
+
+                    // Determine transitions based on sidebar index or specific logic
+                    const navItemsArr = Array.from(document.querySelectorAll('.nav-item[data-view]'));
+                    const currentIndex = navItemsArr.indexOf(document.querySelector('.nav-item.active[data-view]')); // This might be newly active item
+                    // Wait, we just updated the active class. 
+                    // Let's find index of 'item' (target) vs index of 'currentView's associated link' (source).
+                    
+                    // Actually, simpler: define an order map
+                    const order = ['dashboard', 'tasks', 'meetings'];
+                    const currentId = currentView.id;
+                    const nextId = targetId;
+                    
+                    let direction = 'next';
+                    if (order.indexOf(nextId) < order.indexOf(currentId)) {
+                        direction = 'prev';
+                    }
+
+                    // Apply Animation Classes
+                    if (direction === 'next') {
+                        currentView.classList.add('slide-out-left');
+                        targetView.classList.add('slide-in-right', 'active-view');
+                    } else {
+                        currentView.classList.add('slide-out-right');
+                        targetView.classList.add('slide-in-left', 'active-view');
+                    }
+
+                    // Cleanup after animation finishes
+                    setTimeout(() => {
+                        currentView.classList.remove('active-view', 'slide-out-left', 'slide-out-right');
+                        targetView.classList.remove('slide-in-right', 'slide-in-left');
+                    }, 500); // 500ms matches CSS animation duration
+                });
+            });
+            // --- UI INTERACTIVITY ---
+            
+            // 1. Tab Switching (Universal with Sliding Indicator)
+            const updateTabIndicator = (parent, activeBtn) => {
+                const indicator = parent.querySelector('.tab-indicator');
+                if (indicator && activeBtn) {
+                    indicator.style.left = `${activeBtn.offsetLeft}px`;
+                    indicator.style.width = `${activeBtn.offsetWidth}px`;
+                }
+            };
+
+            // Initialize indicators
+            document.querySelectorAll('.filter-tabs').forEach(parent => {
+                const active = parent.querySelector('.tab-btn.active');
+                if (active) updateTabIndicator(parent, active);
+            });
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const parent = this.closest('.filter-tabs');
+                    if(parent) {
+                        parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        updateTabIndicator(parent, this);
+                    }
+                });
+            });
+
+            // 2. View Toggle (Week/Month)
+            document.querySelectorAll('.view-toggle button').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const parent = this.closest('.view-toggle');
+                    if(parent) {
+                        parent.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+
+            // 3. Date Navigation (Simulated)
+            const dateDisplay = document.querySelector('.current-date');
+            if (dateDisplay) {
+                const navBtns = document.querySelectorAll('.calendar-nav .icon-btn');
+                navBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        let text = dateDisplay.innerText;
+                        if (text.includes(',')) {
+                             if(btn.querySelector('.ph-caret-right')) {
+                                 dateDisplay.innerText = "May 25, 2024";
+                             } else {
+                                 dateDisplay.innerText = "May 23, 2024";
+                             }
+                        }
+                    });
+                });
+            }
+
+            // 4. Checkbox Toggling
+            document.addEventListener('click', (e) => {
+                const checkbox = e.target.closest('.checkbox');
+                if (checkbox) {
+                    checkbox.classList.toggle('checked');
+                }
+            });
+
+            // 5. Add Task / Meeting Simulation
+            document.querySelectorAll('.add-task, .add-task-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // Prevent default anchor behavior
+                    e.preventDefault();
+
+                    // Find context
+                    let container = btn.closest('.glass-card') || btn.closest('.task-list-container') || document.querySelector('#tasks .task-list-container');
+                    
+                    if (btn.closest('#meetings')) {
+                         const list = document.querySelector('#meetings .task-list-container .glass-card');
+                         if(list) {
+                            const newMeeting = document.createElement('div');
+                            newMeeting.className = 'meeting-row-item';
+                            newMeeting.style.animation = 'fadeIn 0.3s ease';
+                            newMeeting.innerHTML = `
+                                <div class="meeting-info-group">
+                                    <div class="meeting-icon bg-purple-light">
+                                        <i class="ph-fill ph-video-camera"></i>
+                                    </div>
+                                    <div class="meeting-details">
+                                        <h4>New Brainstorming</h4>
+                                        <p>Just Now • 1 hr</p>
+                                    </div>
+                                </div>
+                                <div class="avatar-group">
+                                    <div class="avatar more" style="margin-left:0; width:32px; height:32px; font-size:12px;">You</div>
+                                </div>
+                            `;
+                            list.insertBefore(newMeeting, list.querySelector('.meeting-row-item'));
+                         }
+                    } else {
+                        // Task List Context
+                        let list = btn.closest('.task-list');
+                        // Fallback if button is outside list (like in controls)
+                        if (!list) list = document.querySelector('#tasks .task-list'); 
+                        if (!list) list = document.querySelector('.task-list');
+
+                        if (list) {
+                            const newTask = document.createElement('div');
+                            newTask.className = 'task-item';
+                            newTask.style.animation = 'fadeIn 0.3s ease';
+                            newTask.innerHTML = `
+                                <div class="checkbox"><i class="ph-bold ph-check"></i></div>
+                                <div style="flex:1;">
+                                    <span style="display:block; color:var(--text-primary);">New Task Item</span>
+                                </div>
+                                <span style="font-size:0.75rem; color:#aaa;">Pending</span>
+                            `;
+                            // Try to insert cleanly
+                            const firstTask = list.querySelector('.task-item');
+                            if(firstTask) {
+                                list.insertBefore(newTask, firstTask);
+                            } else {
+                                list.appendChild(newTask);
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
